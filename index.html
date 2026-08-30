@@ -757,7 +757,15 @@ function navigate(pageId, fromDetail) {
   document.querySelectorAll('video').forEach(function(v) { v.pause(); });
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-  document.getElementById(pageId).classList.add('active');
+  var targetPage = document.getElementById(pageId);
+  // 从详情页返回时不播放fadeIn动画，避免干扰滚动
+  if (fromDetail) {
+    targetPage.style.animation = 'none';
+  }
+  targetPage.classList.add('active');
+  if (fromDetail) {
+    setTimeout(function() { targetPage.style.animation = ''; }, 50);
+  }
   const navLink = document.querySelector('.nav-link[data-page="' + pageId + '"]');
   if (navLink) navLink.classList.add('active');
 
@@ -771,8 +779,10 @@ function navigate(pageId, fromDetail) {
   }
   resetScroll();
   requestAnimationFrame(resetScroll);
+  requestAnimationFrame(function() { requestAnimationFrame(resetScroll); });
   setTimeout(resetScroll, 50);
   setTimeout(resetScroll, 150);
+  setTimeout(resetScroll, 300);
 
   const navLeft = document.getElementById('nav-left');
   if (pageId === 'home') {
