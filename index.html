@@ -304,6 +304,9 @@ body{
 }
 .detail-gallery{max-width:1000px;margin:0 auto 48px}
 .detail-gallery img{width:100%;display:block;margin-bottom:24px;border-radius:2px}
+.detail-gallery.gallery-masonry{column-count:2;column-gap:12px}
+.detail-gallery.gallery-masonry img{break-inside:avoid;margin-bottom:12px}
+.detail-gallery.gallery-masonry .video-wrapper{break-inside:avoid;margin-bottom:12px}
 .detail-gallery .video-wrapper{
   width:100%;margin-bottom:32px;display:flex;flex-direction:column;align-items:center;
 }
@@ -607,7 +610,7 @@ const works = [
   // === 平面版式与视觉 (cat 0) ===
   {id:1, cat:0, title:'WGSN实习部分作品', titleEn:'WGSN Internship Works',
    subtitle:'WGSN市场部平面物料设计，涵盖邀请函、主视觉、活动背板等',
-   img:'w1-1.jpg', gallery:['w1-1.jpg','w1-2.jpg','w1-3.jpg','w1-4.jpg','w1-5.jpg'], year:'2026', client:'WGSN', role:'平面设计实习生', awards:[],
+   img:'w1-1.jpg', gallery:['w1-1.jpg','w1-2.jpg','w1-3.jpg','w1-4.jpg','w1-5.jpg'], galleryCols:2, year:'2026', client:'WGSN', role:'平面设计实习生', awards:[],
    desc:'负责WGSN市场部的平面物料设计，如易拉宝、线上邀请函、线下海报、活动主KV、活动背板等。已完成WGSN 27/28秋冬运动户外趋势发布邀请函、2028未来消费者手册、中国国际纺织品面料及辅料（秋冬）博览会邀请函、湾向未来·WGSN大湾区趋势与增长峰会主视觉等项目设计，帮助市场部有效宣发营销。'},
 
   {id:2, cat:0, title:'瓦韵华章——瓦当纹样信息可视化设计', titleEn:'Tile Rhythm Visualization',
@@ -744,6 +747,8 @@ let currentView = 'list';
 let workScrollPos = 0; // 保存作品页的滚动位置
 
 function navigate(pageId, fromDetail) {
+  // 离开当前页面前暂停所有视频
+  document.querySelectorAll('video').forEach(function(v) { v.pause(); });
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
   document.getElementById(pageId).classList.add('active');
@@ -851,6 +856,7 @@ function showDetail(id) {
   
   // 渲染图片和视频画廊
   const gallery = document.getElementById('detail-gallery');
+  gallery.classList.toggle('gallery-masonry', w.galleryCols === 2);
   if (w.gallery && w.gallery.length > 0) {
     gallery.innerHTML = w.gallery.map(function(src) {
       if (src.endsWith('.mp4')) {
