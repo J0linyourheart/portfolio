@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>孙佳宁 JOLIN · 视觉传达设计师</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@200;300;400;500;600&family=Inter:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+html,body{height:100%;overflow-x:hidden}
+body{
+  font-family:'Inter','Noto Sans SC',-apple-system,BlinkMacSystemFont,sans-serif;
+  background:#fff;color:#1a1a1a;font-weight:300;line-height:1.6;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+}
+
+/* ===== Navigation ===== */
+.nav{
+  position:fixed;top:0;left:0;right:0;height:80px;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0 56px;z-index:100;
+  background:rgba(255,255,255,.94);backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(0,0,0,.05);
+}
+.nav-left{
+  font-size:15px;font-weight:500;letter-spacing:.04em;color:#1a1a1a;
+  cursor:pointer;transition:opacity .3s ease;display:flex;align-items:baseline;gap:10px;
+}
+.nav-left:hover{opacity:.55}
+.nav-left .back-hint{
+  font-size:11px;font-weight:400;color:#bbb;letter-spacing:.08em;
+  opacity:0;transition:opacity .3s ease;pointer-events:none;
+}
+.nav-left.show-hint .back-hint{opacity:1}
+.nav-right{display:flex;gap:44px}
+.nav-link{
+  font-size:15px;font-weight:500;letter-spacing:.04em;color:#1a1a1a;
+  text-decoration:none;cursor:pointer;position:relative;transition:opacity .3s ease;
+}
+.nav-link:hover{opacity:.55}
+.nav-link.active::after{
+  content:'';position:absolute;bottom:-8px;left:0;right:0;
+  height:1.5px;background:#1a1a1a;
+}
+
+/* ===== Pages ===== */
+.page{display:none;min-height:100vh;padding-top:80px}
+.page.active{display:block;animation:fadeIn .7s cubic-bezier(.22,.61,.36,1)}
+@keyframes fadeIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+/* ===== Home ===== */
+#home{display:none}
+#home.active{display:block;padding-top:0}
+.home-hero{
+  min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+  padding-top:80px;padding-bottom:60px;position:relative;
+}
+.portrait{
+  width:300px;margin:0 auto 36px;overflow:hidden;border-radius:2px;
+  box-shadow:0 2px 8px rgba(0,0,0,.06);
+}
+.portrait img{width:100%;height:auto;display:block}
+.name{
+  font-size:64px;font-weight:300;letter-spacing:.08em;line-height:1;color:#1a1a1a;
+  text-align:center;
+}
+.name .cn{
+  display:inline-block;font-family:'Noto Serif SC',serif;font-weight:300;
+  vertical-align:baseline;
+}
+.name .en{
+  display:inline-block;
+  font-family:'Adobe Song Std','Adobe 宋体 Std','Songti SC','STSong','SimSun','Noto Serif SC',serif;
+  font-weight:300;font-size:1.1em;letter-spacing:.06em;
+  vertical-align:baseline;line-height:1;
+}
+.home-tagline{
+  margin-top:20px;font-size:12px;color:#aaa;letter-spacing:.25em;
+  text-transform:uppercase;font-weight:400;
+}
+.home-scroll-hint{
+  position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+  font-size:11px;color:#bbb;letter-spacing:.2em;text-transform:uppercase;
+  animation:floatHint 2.4s ease-in-out infinite;
+}
+@keyframes floatHint{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+
+/* ===== 2D Orbital Ring Section ===== */
+.ring-section{
+  height:100vh;position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  background:#0a0a0a;
+}
+.ring-container{position:relative;width:100%;height:100%}
+.ring-item{
+  position:absolute;width:180px;height:135px;
+  border-radius:6px;overflow:hidden;
+  box-shadow:0 4px 24px rgba(0,0,0,.08);
+}
+.ring-item img{width:100%;height:100%;object-fit:cover;display:block}
+.ring-center{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  text-align:center;z-index:10;pointer-events:none;
+}
+.ring-center-title{font-size:36px;letter-spacing:.06em;margin-bottom:20px}
+.ring-center-title .cn{font-family:'Noto Serif SC',serif;font-weight:300;color:#f5f5f5}
+.ring-center-title .en{font-family:'Spectral',serif;font-weight:200;color:#f5f5f5}
+.ring-center-sub{
+  font-size:16px;color:#e8e8e8;letter-spacing:.18em;font-weight:400;
+  display:flex;align-items:center;justify-content:center;gap:16px;
+}
+.ring-center-sub .arrow{
+  display:inline-block;width:40px;height:1px;background:#e8e8e8;
+  position:relative;transition:width .4s ease;
+}
+.ring-center-sub .arrow::after{
+  content:'';position:absolute;right:0;top:50%;
+  width:7px;height:7px;border-right:1px solid #e8e8e8;border-top:1px solid #e8e8e8;
+  transform:translateY(-50%) rotate(45deg);
+}
+.ring-cta{pointer-events:auto;cursor:pointer;display:inline-block;transition:opacity .3s ease}
+.ring-cta:hover{opacity:.6}
+.ring-cta:hover .ring-center-sub .arrow{width:52px}
+
+/* ===== Home Contact (bottom) ===== */
+.home-contact{
+  padding:100px 24px 80px;display:flex;flex-direction:column;align-items:center;gap:56px;
+}
+.home-contact h3{
+  font-size:16px;text-transform:uppercase;letter-spacing:.18em;
+  color:#1a1a1a;font-weight:700;
+}
+.contact-grid{
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:120px;
+  width:100%;max-width:1000px;align-items:start;
+}
+.contact-item{display:flex;flex-direction:column;align-items:center;gap:14px}
+.contact-item svg{width:26px;height:26px;stroke:#1a1a1a;fill:none;stroke-width:1.5}
+.contact-item .contact-label{font-size:11px;color:#aaa;letter-spacing:.15em;text-transform:uppercase;white-space:nowrap}
+.contact-item .contact-value{font-size:16px;font-weight:500;color:#1a1a1a;letter-spacing:.02em;text-align:center;white-space:nowrap}
+
+/* ===== About ===== */
+#about.active{display:flex;justify-content:center}
+.about-content{max-width:760px;margin:0 auto;padding:110px 48px 80px;width:100%}
+.about-header{
+  display:flex;align-items:center;gap:48px;margin-bottom:72px;
+  padding-bottom:56px;border-bottom:1px solid #eee;
+}
+.about-header .id-photo{
+  width:160px;height:200px;flex-shrink:0;overflow:hidden;border-radius:2px;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+.about-header .id-photo img{width:100%;height:100%;object-fit:cover;display:block;image-rendering:-webkit-optimize-contrast}
+.page-title{font-size:44px;letter-spacing:.04em;line-height:1.3}
+.page-title .cn{font-family:'Noto Serif SC',serif;font-weight:300;color:#1a1a1a}
+.page-title .en{font-family:'Spectral',serif;font-weight:200;color:#1a1a1a}
+.about-section{margin-bottom:56px}
+.about-section h3{
+  font-size:16px;text-transform:uppercase;letter-spacing:.18em;
+  color:#1a1a1a;margin-bottom:24px;font-weight:700;
+}
+.about-section p{font-size:17px;line-height:1.9;color:#444;margin-bottom:10px}
+.about-section .timeline-item{margin-bottom:26px;padding-left:16px;border-left:1px solid #eee}
+.about-section .timeline-item .year{color:#1a1a1a;font-size:17px;letter-spacing:.03em;font-weight:400}
+.about-section .timeline-item .title{color:#1a1a1a;font-size:17px;font-weight:400;margin-top:3px}
+.about-section .timeline-item .company{color:#1a1a1a;font-size:17px;margin-top:2px;font-weight:400}
+.about-section .timeline-item .desc{color:#555;font-size:16px;margin-top:8px;line-height:1.8}
+.skill-tags{display:flex;flex-wrap:wrap;gap:10px}
+.skill-tags span{
+  font-size:15px;color:#555;border:1px solid #ddd;padding:8px 18px;border-radius:40px;background:#fafafa;
+}
+.skill-category{margin-bottom:20px}
+.skill-category .skill-cat-label{
+  font-size:14px;color:#1a1a1a;font-weight:500;margin-bottom:10px;letter-spacing:.04em;
+}
+.awards-list{list-style:none}
+.awards-list li{font-size:16px;color:#555;margin-bottom:10px;padding-left:16px;position:relative;line-height:1.7}
+.awards-list li::before{content:'·';position:absolute;left:0;color:#ccc;font-weight:bold}
+
+/* ===== About Bottom Contact ===== */
+.bottom-contact{
+  margin-top:80px;padding:72px 0 40px;border-top:1px solid #eee;
+  display:flex;flex-direction:column;align-items:center;gap:56px;
+}
+.bottom-contact h3{
+  font-size:16px;text-transform:uppercase;letter-spacing:.18em;
+  color:#1a1a1a;font-weight:700;
+}
+
+/* ===== Work ===== */
+.work-header{padding:80px 48px 0;text-align:center}
+.categories-row{
+  display:flex;justify-content:center;align-items:center;gap:22px;flex-wrap:wrap;
+  font-size:17px;font-weight:500;letter-spacing:.04em;
+}
+.category{
+  cursor:pointer;color:#bbb;transition:color .35s ease;white-space:nowrap;
+  position:relative;padding-bottom:8px;font-weight:500;
+}
+.category:hover{color:#666}
+.category.active{color:#1a1a1a}
+.category.active::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1.5px;background:#1a1a1a}
+.separator{color:#ddd;font-size:17px;font-weight:300}
+
+/* View Toggle */
+.view-toggle{
+  position:absolute;top:96px;right:56px;display:flex;gap:8px;
+}
+.view-btn{
+  width:40px;height:40px;border:1px solid #ddd;border-radius:4px;
+  background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:all .3s ease;
+}
+.view-btn:hover{border-color:#999}
+.view-btn.active{background:#1a1a1a;border-color:#1a1a1a}
+.view-btn svg{width:18px;height:18px;stroke:#1a1a1a;fill:none;stroke-width:1.5;transition:stroke .3s ease}
+.view-btn.active svg{stroke:#fff}
+
+/* Grid View */
+.works-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:40px;
+  padding:72px 56px 140px;max-width:1280px;margin:0 auto;
+}
+.work-item{cursor:pointer;position:relative;overflow:hidden;border-radius:2px}
+.work-item img{
+  width:100%;aspect-ratio:4/3;object-fit:cover;display:block;
+  transition:filter .5s ease,transform .5s ease;
+}
+.work-item:hover img{filter:blur(12px);transform:scale(1.04)}
+.work-item .work-overlay{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;text-align:center;
+  background:rgba(255,255,255,.45);
+  opacity:0;transition:opacity .5s ease;z-index:2;padding:32px;
+}
+.work-item:hover .work-overlay{opacity:1}
+.work-item .work-title{
+  font-size:24px;font-weight:600;color:#1a1a1a;margin-bottom:8px;
+  letter-spacing:.03em;line-height:1.3;
+  text-shadow:0 1px 6px rgba(255,255,255,.6);
+}
+.work-item .work-title-en{
+  font-size:15px;font-weight:500;color:#555;letter-spacing:.12em;text-transform:uppercase;
+  text-shadow:0 1px 4px rgba(255,255,255,.5);
+}
+
+/* List View */
+.works-list{display:none;flex-direction:column;padding:48px 56px 140px;max-width:1280px;margin:0 auto}
+.work-list-item{
+  display:flex;gap:48px;padding:28px 0;border-bottom:1px solid #eee;cursor:pointer;
+  transition:opacity .3s ease;
+}
+.work-list-item:hover{opacity:.75}
+.work-list-item .list-image{
+  width:280px;flex-shrink:0;aspect-ratio:4/3;overflow:hidden;border-radius:2px;
+  box-shadow:0 2px 8px rgba(0,0,0,.06);
+}
+.work-list-item .list-image img{width:100%;height:100%;object-fit:cover;display:block}
+.work-list-item .list-text{
+  flex:1;display:flex;flex-direction:column;justify-content:center;text-align:left;
+}
+.work-list-item .list-title{
+  font-size:22px;font-weight:600;color:#1a1a1a;margin-bottom:8px;letter-spacing:.03em;
+}
+.work-list-item .list-subtitle{
+  font-size:16px;color:#666;letter-spacing:.02em;line-height:1.7;
+}
+
+/* ===== Work Detail ===== */
+#work-detail.active{display:flex;justify-content:center}
+.detail-content{max-width:1100px;margin:0 auto;padding:100px 48px 140px;width:100%}
+.back-btn{
+  background:rgba(255,255,255,.92);border:none;font-size:14px;color:#1a1a1a;cursor:pointer;
+  padding:12px 20px;letter-spacing:.06em;font-family:inherit;font-weight:500;
+  position:fixed;bottom:32px;right:48px;z-index:100;
+  border-radius:2px;box-shadow:0 2px 12px rgba(0,0,0,.08);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  transition:all .3s ease;
+}
+.back-btn:hover{color:#666;box-shadow:0 4px 16px rgba(0,0,0,.12)}
+.detail-title{
+  font-family:'Spectral','Noto Serif SC',serif;
+  font-size:38px;font-weight:300;margin-bottom:8px;letter-spacing:.04em;
+}
+.detail-en-title{font-size:14px;color:#999;margin-bottom:32px;letter-spacing:.1em;text-transform:uppercase}
+.detail-awards{
+  max-width:780px;margin:0 auto 40px;padding:20px 24px;
+  background:#fafafa;border-left:3px solid #1a1a1a;border-radius:2px;
+}
+.detail-awards .award-label{
+  font-size:12px;color:#999;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;
+}
+.detail-awards .award-item{
+  font-size:15px;color:#333;line-height:1.8;padding-left:14px;position:relative;
+}
+.detail-awards .award-item::before{
+  content:'🏆';position:absolute;left:-2px;top:1px;font-size:13px;
+}
+.detail-intro{
+  max-width:860px;margin:0 auto 56px;font-size:17px;line-height:1.9;color:#333;
+}
+.detail-gallery{max-width:1000px;margin:0 auto 48px}
+.detail-gallery img{width:100%;display:block;margin-bottom:24px;border-radius:2px}
+.detail-gallery .video-wrapper{
+  width:100%;margin-bottom:32px;display:flex;flex-direction:column;align-items:center;
+}
+.detail-gallery .video-wrapper video{
+  max-width:100%;max-height:70vh;width:auto;height:auto;
+  border-radius:2px 2px 0 0;cursor:pointer;object-fit:contain;
+  background:#000;display:block;
+}
+.detail-gallery .video-wrapper .video-controls{
+  width:auto;min-width:320px;max-width:100%;
+  background:#1a1a1a;border-radius:0 0 2px 2px;
+  display:flex;align-items:center;gap:12px;padding:8px 16px;
+}
+.detail-gallery .video-wrapper .video-btn{
+  background:none;border:none;color:#fff;cursor:pointer;
+  font-size:16px;padding:4px 8px;line-height:1;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+}
+.detail-gallery .video-wrapper .video-btn:hover{color:#ccc}
+.detail-gallery .video-wrapper .video-progress{
+  flex:1;height:4px;background:#333;border-radius:2px;
+  cursor:pointer;position:relative;overflow:hidden;
+}
+.detail-gallery .video-wrapper .video-progress-fill{
+  height:100%;background:#fff;border-radius:2px;width:0%;
+  transition:width .1s linear;
+}
+.detail-gallery .video-wrapper .video-time{
+  color:#999;font-size:12px;flex-shrink:0;font-family:monospace;
+}
+.detail-meta{
+  display:flex;gap:48px;margin:0 auto 32px;padding-bottom:24px;
+  border-bottom:1px solid #eee;flex-wrap:wrap;max-width:1000px;
+}
+.detail-meta div{font-size:13px}
+.detail-meta .label{color:#999;margin-bottom:4px;letter-spacing:.1em;font-size:11px;text-transform:uppercase}
+.detail-meta .value{color:#333;font-weight:500}
+
+/* ===== Responsive ===== */
+@media(max-width:768px){
+  .nav{padding:0 24px;height:64px}
+  .page{padding-top:64px}
+  .nav-right{gap:20px}
+  .nav-link{font-size:13px}
+  .nav-left{font-size:13px}
+  .nav-left .back-hint{display:none}
+  .portrait{width:240px}
+  .name{font-size:48px;letter-spacing:.06em}
+  .home-tagline{font-size:11px}
+  .home-hero{padding-top:64px;padding-bottom:60px}
+  .works-grid{grid-template-columns:1fr;gap:24px;padding:40px 24px 80px}
+  .works-list{padding:40px 24px 80px}
+  .work-list-item{flex-direction:column;gap:16px}
+  .work-list-item .list-image{width:100%}
+  .about-content{padding:60px 24px 60px}
+  .about-header{flex-direction:column;gap:28px;text-align:center}
+  .detail-content{padding:60px 24px 80px}
+  .categories-row{gap:12px;font-size:14px}
+  .page-title{font-size:32px}
+  .detail-title{font-size:28px}
+  .detail-gallery{max-width:100%}
+  .contact-grid{gap:40px}
+  .work-item .work-title{font-size:20px}
+  .work-item .work-title-en{font-size:13px}
+  .ring-center-title{font-size:26px}
+  .ring-item{width:130px;height:98px}
+  .bottom-contact{gap:40px}
+  .home-contact{gap:40px;padding:60px 24px 60px}
+  .view-toggle{right:24px;top:80px}
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+  <div class="nav-left" id="nav-left" onclick="navigate('home')">
+    <span>孙佳宁 视觉传达设计师</span>
+    <span class="back-hint">Back to Home / 返回首页</span>
+  </div>
+  <div class="nav-right">
+    <a class="nav-link" data-page="about" onclick="navigate('about')">关于我 About Me</a>
+    <a class="nav-link" data-page="work" onclick="navigate('work')">作品 Work</a>
+  </div>
+</nav>
+
+<!-- ===== Home ===== -->
+<section id="home" class="page active">
+  <div class="home-hero">
+    <div class="portrait"><img src="portrait.jpg" alt="孙佳宁 JOLIN"></div>
+    <h1 class="name"><span class="cn">孙佳宁</span><span class="en">JOLIN</span></h1>
+    <p class="home-tagline">Visual Communication Designer</p>
+    <div class="home-scroll-hint">Scroll Down ↓</div>
+  </div>
+
+  <!-- 2D Orbital Ring -->
+  <div class="ring-section">
+    <div class="ring-container" id="ring-container"></div>
+    <div class="ring-center">
+      <div class="ring-center-title"><span class="cn">全部作品</span> <span class="en">Works</span></div>
+      <div class="ring-cta" onclick="navigate('work')">
+        <div class="ring-center-sub"><span>View All</span><span class="arrow"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Home Contact -->
+  <div class="home-contact">
+    <h3>联系方式 Contact</h3>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <div class="contact-label">Phone / WeChat</div>
+        <div class="contact-value">131 4816 9420</div>
+      </div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <div class="contact-label">Email 1</div>
+        <div class="contact-value">2952244237@qq.com</div>
+      </div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <div class="contact-label">Email 2</div>
+        <div class="contact-value">jnsunolin0@gmail.com</div>
+      </div>
+    </div>
+    <div class="contact-item">
+      <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <div class="contact-label">Location</div>
+      <div class="contact-value">上海 闵行区</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== About ===== -->
+<section id="about" class="page">
+  <div class="about-content">
+    <div class="about-header">
+      <div class="id-photo"><img src="id-photo.jpg" alt="孙佳宁证件照"></div>
+      <h2 class="page-title"><span class="cn">关于我</span><br><span class="en">About Me</span></h2>
+    </div>
+
+    <div class="about-section">
+      <h3>自我评价 Self Evaluation</h3>
+      <p>1. 热爱设计，具备扎实的美术功底与创意思维，擅长从用户视角思考。</p>
+      <p>2. 执行力强，有责任心，善于沟通表达，能高效完成设计任务。</p>
+      <p>3. 积极学习行业趋势，定期浏览优秀设计网站与媒体。</p>
+    </div>
+
+    <div class="about-section">
+      <h3>教育背景 Education</h3>
+      <div class="timeline-item">
+        <div class="title">上海大学（211）· 视觉传达设计 · 本科27届毕业生</div>
+        <div class="company">GPA：3.8 / 4.0</div>
+        <div class="desc">主修课程：UI设计（94）、VI设计（91）、包装与材料设计（90）、符号与标志设计（89）、文创衍生设计（97）、出版物设计（91）、数码视频（94）、符号与传达记号（92）、信息视觉化设计（93）、编排设计（86）、字体设计（87）</div>
+      </div>
+    </div>
+
+    <div class="about-section">
+      <h3>实习与项目经验 Experience</h3>
+      <div class="timeline-item">
+        <div class="year">2026.04 — 至今</div>
+        <div class="title">平面设计实习生</div>
+        <div class="company">达帛商务咨询（上海）有限公司</div>
+        <div class="desc">负责 WGSN 市场部平面物料设计，如易拉宝、线上邀请函、线下海报、活动主KV、活动背板等。已完成 WGSN 27/28 秋冬运动户外趋势发布邀请函、2028 未来消费者手册、中国国际纺织品面料及辅料（秋冬）博览会邀请函、湾向未来·WGSN 大湾区趋势与增长峰会主视觉等项目。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2026.04 — 2026.08</div>
+        <div class="title">UI 设计</div>
+        <div class="company">民国海上画坛艺术家数字地图与互动展示项目</div>
+        <div class="desc">完成互动数字地图作品的互动式地图与网站建设中的 UI 界面设计，包括 logo、系列 icon、交互按键、底图设计等。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2025.12 — 2026.03</div>
+        <div class="title">平面设计实习生</div>
+        <div class="company">上海湃喏文旅发展有限公司</div>
+        <div class="desc">完成荣巷 × 美国 MONOPOLY 街区开发项目初期策划案，包括全域主题包装创意概念、玩法与创意、各区域视觉方案与效果呈现。辅助团队完成北京环球影城万圣节鬼屋主题平面物料，参与珠海长隆乐园夜间花车更新项目策划。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2025.07 — 2025.08</div>
+        <div class="title">UI 设计实习生</div>
+        <div class="company">上海瑞恒系统软件开发有限公司</div>
+        <div class="desc">主导完成锦江旅游打车小程序的界面设计，包括手机与平板端。</div>
+      </div>
+    </div>
+
+    <div class="about-section">
+      <h3>获奖与荣誉 Awards</h3>
+      <ul class="awards-list">
+        <li>第十四届未来设计师·全国高校数字艺术设计大赛 省赛二等奖×2、省赛三等奖×2</li>
+        <li>第二十届中国好创意暨全国数字艺术设计大赛 省赛三等奖×2</li>
+        <li>第十届米兰设计周中国高校设计学科作品展 省赛三等奖</li>
+        <li>第十九届中国好创意设计大赛 省赛二等奖</li>
+        <li>2026上海绿色包装创新创意设计大赛 优秀奖</li>
+        <li>第二届"统战源"文创设计大赛 二等奖</li>
+        <li>2025 年闵行区优秀志愿者</li>
+        <li>2023-2024 学年 上海大学学业奖学金</li>
+        <li>2024-2025 学年 上海大学学业奖学金</li>
+      </ul>
+    </div>
+
+    <div class="about-section">
+      <h3>职业技能 Skills</h3>
+      <div class="skill-category">
+        <div class="skill-cat-label">软件 Software</div>
+        <div class="skill-tags">
+          <span>Photoshop</span><span>Illustrator</span><span>InDesign</span>
+          <span>Figma</span><span>Procreate</span><span>Blender</span>
+          <span>剪映</span><span>GPT</span><span>即梦</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-label">语言能力 Language</div>
+        <div class="skill-tags">
+          <span>大学英语六级 CET-6</span><span>基本的听、说、读、写</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-label">计算机 Computer</div>
+        <div class="skill-tags">
+          <span>计算机二级证书</span><span>Word</span><span>Excel</span><span>PowerPoint</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-label">持证 Certificate</div>
+        <div class="skill-tags">
+          <span>中国红十字会心肺复苏急救证</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-contact">
+      <h3>联系方式 Contact</h3>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div class="contact-label">Phone / WeChat</div>
+          <div class="contact-value">131 4816 9420</div>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <div class="contact-label">Email 1</div>
+          <div class="contact-value">2952244237@qq.com</div>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <div class="contact-label">Email 2</div>
+          <div class="contact-value">jnsunolin0@gmail.com</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div class="contact-label">Location</div>
+        <div class="contact-value">上海 闵行区</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Work ===== -->
+<section id="work" class="page">
+  <div class="work-header">
+    <div class="categories-row">
+      <span class="category active" data-cat="0" onclick="filterWorks(0)">平面版式与视觉</span>
+      <span class="separator">/</span>
+      <span class="category" data-cat="1" onclick="filterWorks(1)">品牌系统与产品</span>
+      <span class="separator">/</span>
+      <span class="category" data-cat="2" onclick="filterWorks(2)">数字媒体与交互</span>
+    </div>
+  </div>
+  <div class="view-toggle">
+    <button class="view-btn" id="grid-btn" onclick="setView('grid')" title="宫格视图">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+    </button>
+    <button class="view-btn active" id="list-btn" onclick="setView('list')" title="列表视图">
+      <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/><circle cx="6" cy="6" r="1.5" fill="currentColor" stroke="none"/><circle cx="6" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="6" cy="18" r="1.5" fill="currentColor" stroke="none"/></svg>
+    </button>
+  </div>
+  <div class="works-grid" id="works-grid"></div>
+  <div class="works-list" id="works-list"></div>
+</section>
+
+<!-- ===== Work Detail ===== -->
+<section id="work-detail" class="page">
+  <div class="detail-content">
+    <button class="back-btn" onclick="navigate('work', true)">← 返回作品 Back</button>
+    <h2 class="detail-title" id="detail-title"></h2>
+    <p class="detail-en-title" id="detail-en"></p>
+    <div class="detail-awards" id="detail-awards" style="display:none">
+      <div class="award-label">获奖情况 Awards</div>
+      <div id="detail-awards-list"></div>
+    </div>
+    <div class="detail-intro" id="detail-intro"></div>
+    <div class="detail-gallery" id="detail-gallery"></div>
+    <div class="detail-meta" id="detail-meta"></div>
+  </div>
+</section>
+
+<script>
+const works = [
+  // === 平面版式与视觉 (cat 0) ===
+  {id:1, cat:0, title:'WGSN实习部分作品', titleEn:'WGSN Internship Works',
+   subtitle:'WGSN市场部平面物料设计，涵盖邀请函、主视觉、活动背板等',
+   img:'w1-1.jpg', gallery:['w1-1.jpg','w1-2.jpg','w1-3.jpg','w1-4.jpg','w1-5.jpg'], year:'2026', client:'WGSN', role:'平面设计实习生', awards:[],
+   desc:'负责WGSN市场部的平面物料设计，如易拉宝、线上邀请函、线下海报、活动主KV、活动背板等。已完成WGSN 27/28秋冬运动户外趋势发布邀请函、2028未来消费者手册、中国国际纺织品面料及辅料（秋冬）博览会邀请函、湾向未来·WGSN大湾区趋势与增长峰会主视觉等项目设计，帮助市场部有效宣发营销。'},
+
+  {id:2, cat:0, title:'瓦韵华章——瓦当纹样信息可视化设计', titleEn:'Tile Rhythm Visualization',
+   subtitle:'系统梳理南北朝至明清瓦当演变的七张信息可视化长图',
+   img:'w2-1.jpg', gallery:['w2-1.jpg','w2-2.jpg','w2-3.jpg'], year:'2025', client:'课程作业', role:'信息可视化设计',
+   awards:['第十四届未来设计师·全国高校数字艺术设计大赛 省赛三等奖','第二十届中国好创意暨全国数字艺术设计大赛 省赛三等奖','第十届米兰设计周中国高校设计学科作品展 省赛三等奖'],
+   desc:'以瓦当为研究载体，通过信息可视化方法将传统建筑构件的历史演变转化为可感知的视觉叙事。研究总结梳理了《南北朝至明清时期鲁中西地区兽面纹瓦当纹饰研究》等多篇论文著作的数据，确保内容的可信度与学术严谨性。作品由一张大图与六张小图组成，分别可视化了瓦当的形制演变时间线、题材分类、地域分布、纹样拆解、制作工艺、当代应用等多维度信息，实现"文化解读—信息梳理—视觉转译"的完整闭环。'},
+
+  {id:3, cat:0, title:'克苏鲁神话视觉可视化设计', titleEn:'Cthulhu Mythos Visualization',
+   subtitle:'克苏鲁神话神祇时间线与符号学的暗黑风格可视化',
+   img:'w3-1.jpg', gallery:['w3-1.jpg','w3-pdf-1.jpg','w3-pdf-2.jpg','w3-pdf-3.jpg','w3-pdf-4.jpg','w3-pdf-5.jpg','w3-pdf-6.jpg','w3-pdf-7.jpg','w3-pdf-8.jpg','w3-pdf-9.jpg','w3-pdf-10.jpg','w3-pdf-11.jpg'], year:'2025', client:'课程作业', role:'信息可视化设计', awards:[],
+   desc:'对克苏鲁神话中神祇关于地球的时间线进行系统整理，结合符号学研究展开视觉可视化。字体采用字心坊暗黑哥特体，在笔画中融入触手与眼睛的形态特征，配合克苏鲁抱住地球的核心画面与木刻风格插图，整体营造出强烈的压迫感与神秘氛围，将洛夫克拉夫特笔下的恐怖美学转化为可感知的视觉叙事。'},
+
+  {id:4, cat:0, title:'上海邮政博物馆导识icon设计', titleEn:'Postal Museum Icon Design',
+   subtitle:'解决逛展动线痛点的邮政博物馆系列导览icon',
+   img:'w4-1.png', gallery:['w4-1.png','w4-pdf-1.jpg','w4-pdf-2.jpg','w4-pdf-3.jpg','w4-pdf-4.jpg','w4-pdf-5.jpg','w4-pdf-6.jpg','w4-pdf-7.jpg','w4-pdf-8.jpg'], year:'2025', client:'课程作业', role:'Icon设计 / 导识标志设计', awards:[],
+   desc:'为上海邮政博物馆设计系列导览icon，解决单一逛展动线中缺乏展览标识、功能型标识无特色等问题。以"连接美好，无处不在"与"发展与关怀"为关键词，提取邮路线条、邮戳截点、中国邮政标志等核心元素进行系统化设计，兼具识别性与品牌调性。'},
+
+  {id:5, cat:0, title:'江户川乱步短篇小说集书籍装帧设计', titleEn:'Edogawa Ranpo Short Stories',
+   subtitle:'六册骑马钉加一册经折装的推理小说书籍装帧',
+   img:'w5-1.jpg', gallery:['w5-1.jpg','w5-pdf-1.jpg','w5-pdf-2.jpg','w5-pdf-3.jpg','w5-pdf-4.jpg','w5-pdf-5.jpg','w5-pdf-6.jpg','w5-pdf-7.jpg','w5-pdf-8.jpg','w5-pdf-9.jpg','w5-pdf-10.jpg','w5-pdf-11.jpg','w5-pdf-12.jpg','w5-pdf-13.jpg','w5-pdf-14.jpg','w5-pdf-15.jpg','w5-pdf-16.jpg','w5-pdf-17.jpg','w5-pdf-18.jpg','w5-pdf-19.jpg','w5-pdf-20.jpg','w5-pdf-21.jpg'], year:'2025', client:'课程作业', role:'书籍装帧设计 / 书籍排版', awards:[],
+   desc:'选取江户川乱步六篇短篇小说，采用可单册取阅的五册骑马订加一册经折装形式，以金色皮筋固定，模仿日式和服"带缔"的意象。视觉语言以日本传统红色系与七宝纹样构成。《人椅》采用经折装呼应书信体叙事，《红色房间》内页红色渐变与内容相印，每册在不破坏阅读体验的前提下加入与故事节奏对应的细节设计。'},
+
+  {id:6, cat:0, title:'自创塔罗电子书《灵魂的22种镜像》', titleEn:'22 Mirrors of the Soul Tarot E-book',
+   subtitle:'面向年轻精神消费群体的韦特塔罗使用说明电子书',
+   img:'w6-pdf-8.jpg', gallery:['w6-pdf-1.jpg','w6-pdf-2.jpg','w6-pdf-3.jpg','w6-pdf-4.jpg','w6-pdf-5.jpg','w6-pdf-6.jpg','w6-pdf-7.jpg','w6-pdf-8.jpg','w6-pdf-9.jpg','w6-pdf-10.jpg','w6-pdf-11.jpg','w6-pdf-12.jpg','w6-pdf-13.jpg','w6-pdf-14.jpg','w6-pdf-15.jpg','w6-pdf-16.jpg','w6-pdf-17.jpg','w6-pdf-18.jpg','w6-pdf-19.jpg','w6-pdf-20.jpg','w6-pdf-21.jpg','w6-pdf-22.jpg','w6-pdf-23.jpg','w6-pdf-24.jpg','w6-pdf-25.jpg','w6-pdf-26.jpg','w6-pdf-27.jpg','w6-pdf-28.jpg','w6-pdf-29.jpg','w6-pdf-30.jpg','w6-pdf-31.jpg','w6-pdf-32.jpg','w6-pdf-33.jpg','w6-pdf-34.jpg','w6-pdf-35.jpg','w6-pdf-36.jpg','w6-pdf-37.jpg','w6-pdf-38.jpg','w6-pdf-39.jpg','w6-pdf-40.jpg','w6-pdf-41.jpg','w6-pdf-42.jpg','w6-pdf-43.jpg','w6-pdf-44.jpg','w6-pdf-45.jpg','w6-pdf-46.jpg','w6-pdf-47.jpg','w6-pdf-48.jpg','w6-pdf-49.jpg','w6-pdf-50.jpg','w6-pdf-51.jpg','w6-pdf-52.jpg','w6-pdf-53.jpg','w6-pdf-54.jpg','w6-pdf-55.jpg','w6-pdf-56.jpg','w6-pdf-57.jpg','w6-pdf-58.jpg','w6-pdf-59.jpg','w6-pdf-60.jpg','w6-pdf-61.jpg','w6-pdf-62.jpg','w6-pdf-63.jpg','w6-pdf-64.jpg'], year:'2025', client:'课程作业', role:'书籍装帧设计 / 书籍排版', awards:[],
+   desc:'随着"香火经济"在年轻人中掀起波澜，精神消费的诉求不断增加，占卜、矿石、水晶手串等能够给年轻人一场"精神SPA"的事物普及率持续上升。作为占卜爱好者，借出版物设计课程的机会将韦特塔罗的使用说明以电子书形式呈现——便于快速切换查找页面，希望本书能够真正参与到占卜的一环中，成为使用者与卡牌之间的桥梁。'},
+
+  {id:7, cat:0, title:'商飞文创插画设计', titleEn:'COMAC Cultural Creative Illustration',
+   subtitle:'中国商飞大飞机文创包装插画与衍生品应用设计',
+   img:'w-shangfei-pdf-4.jpg', gallery:['w-shangfei-pdf-1.jpg','w-shangfei-pdf-2.jpg','w-shangfei-pdf-3.jpg','w-shangfei-pdf-4.jpg'], year:'2025', client:'中国商用飞机有限责任公司（COMAC）', role:'插画设计 / 文创设计', awards:[],
+   desc:'由于种种原因，商飞公司大飞机文创产品没有在设计初期建立完善的包装方案，缺乏正向的包装需求反馈给工厂。其团队经过大量客户走访找到问题所在，但一直没有找到能契合全品类的包装方案。应商飞公司需求，参与包装设计项目，其中原计划用于包装盒内部的插画经公司评估后认为可直接用于文创衍生品的制作，作品展示了插画本身及其在各类衍生产品上的应用效果。'},
+
+  {id:8, cat:0, title:'反网络暴力主题系列海报', titleEn:'No Cyberbullying Poster Series',
+   subtitle:'探讨网络暴力无形杀伤力的主题系列海报',
+   img:'w8-1.jpg', gallery:['w8-1.jpg'], year:'2025', client:'课程作业', role:'海报设计',
+   awards:['第十九届中国好创意暨全国数字艺术设计大赛 省赛二等奖'],
+   desc:'这组海报设计意在探讨网络暴力匿名、隐蔽且危害深远的特点，着重思考屏幕背后网络暴力虽具虚拟性，却能实实在在伤害现实生活这一情况。旨在通过海报，让大家直观认识到网络暴力的无形"杀伤力"，唤起对抵制网络暴力的重视，共同营造健康的网络环境。'},
+
+  {id:9, cat:0, title:'JAGDA参赛海报——Too Safe to Grow', titleEn:'JAGDA Poster Contest',
+   subtitle:'以过度保护与儿童成长为切入点的SAFE主题参赛海报',
+   img:'w9-pdf-8.jpg', gallery:['w9-pdf-1.jpg','w9-pdf-2.jpg','w9-pdf-3.jpg','w9-pdf-4.jpg','w9-pdf-5.jpg','w9-pdf-6.jpg','w9-pdf-7.jpg','w9-pdf-8.jpg'], year:'2025', client:'参赛作品', role:'海报设计', awards:[],
+   desc:'JAGDA 2025国际海报大赛参赛作品，主题为SAFE。以对儿童的过度保护反而会扼杀其成长为切入点，思考当以安全之名剥夺孩童成长体验时，是否真的安全。画面用泡泡纸将孩童包裹，表达无法自行探索、缺失安全认知的困境——过度保护本身就是一种危险。'},
+
+  {id:10, cat:0, title:'字体相关设计', titleEn:'Typography Design',
+   subtitle:'包含"半截的诗"等字体设计与字体海报作品',
+   img:'w-font-pdf-1.jpg', gallery:['w-font-pdf-1.jpg','w-font-pdf-2.jpg'], year:'2024', client:'参赛作品', role:'字体设计 / 海报设计', awards:[],
+   desc:'字体设计系列作品，探索汉字字形在视觉表达中的可能性。包含"半截的诗"等字体设计项目，通过对笔画形态的拆解与重构，赋予文字新的视觉张力，并延伸为字体海报等应用形式。'},
+
+  {id:11, cat:0, title:'手绘作品', titleEn:'Hand-drawn Works',
+   subtitle:'涵盖不同题材与风格的手绘及板绘作品',
+   img:'w11-pdf-1.jpg', gallery:['w11-pdf-1.jpg','w11-pdf-2.jpg'], year:'2023', client:'参赛作品', role:'手绘（板绘）作品', awards:[],
+   desc:'个人手绘及板绘绘画作品展示，涵盖不同题材与风格，体现扎实的美术功底与创意思维。作品以细腻的笔触与独特的视觉语言，记录生活中值得被看见的瞬间与感受。'},
+
+  // === 品牌系统与产品 (cat 1) ===
+  {id:12, cat:1, title:'极宁品牌——科技品牌形象设计', titleEn:'JiNing Tech Brand Identity',
+   subtitle:'面向科技领域的极简风格品牌视觉系统设计',
+   img:'w12-1.jpg', gallery:['w12-1.jpg','w12-pdf-1.jpg','w12-pdf-2.jpg','w12-pdf-3.jpg','w12-pdf-4.jpg','w12-pdf-5.jpg','w12-pdf-6.jpg','w12-pdf-7.jpg','w12-pdf-8.jpg','w12-pdf-9.jpg','w12-pdf-10.jpg','w12-pdf-11.jpg','w12-pdf-12.jpg','w12-pdf-13.jpg','w12-pdf-14.jpg','w12-pdf-15.jpg','w12-pdf-16.jpg','w12-pdf-17.jpg','w12-pdf-18.jpg','w12-pdf-19.jpg','w12-pdf-20.jpg','w12-pdf-21.jpg','w12-pdf-22.jpg','w12-pdf-23.jpg','w12-pdf-24.jpg','w12-pdf-25.jpg','w12-pdf-26.jpg','w12-pdf-27.jpg','w12-pdf-28.jpg','w12-pdf-29.jpg','w12-pdf-30.jpg','w12-pdf-31.jpg','w12-pdf-32.jpg','w12-pdf-33.jpg','w12-pdf-34.jpg','w12-pdf-35.jpg','w12-pdf-36.jpg','w12-pdf-37.jpg','w12-pdf-38.jpg','w12-pdf-39.jpg','w12-pdf-40.jpg','w12-pdf-41.jpg','w12-pdf-42.jpg','w12-pdf-43.jpg','w12-pdf-44.jpg','w12-pdf-45.jpg','w12-pdf-46.jpg','w12-pdf-47.jpg','w12-pdf-48.jpg','w12-pdf-49.jpg','w12-pdf-50.jpg','w12-pdf-51.jpg','w12-pdf-52.jpg','w12-pdf-53.jpg','w12-pdf-54.jpg','w12-pdf-55.jpg','w12-pdf-56.jpg','w12-pdf-57.jpg','w12-pdf-58.jpg','w12-pdf-59.jpg','w12-pdf-60.jpg','w12-pdf-61.jpg','w12-pdf-62.jpg','w12-pdf-63.jpg','w12-pdf-64.jpg','w12-pdf-65.jpg','w12-pdf-66.jpg','w12-pdf-67.jpg','w12-pdf-68.jpg','w12-pdf-69.jpg','w12-pdf-70.jpg','w12-pdf-71.jpg','w12-pdf-72.jpg','w12-pdf-73.jpg','w12-pdf-74.jpg'], year:'2025', client:'课程作业', role:'品牌设计 / VI系统',
+   awards:['第十四届未来设计师·全国高校数字艺术设计大赛 省赛二等奖','第二十届中国好创意暨全国数字艺术设计大赛 省赛三等奖'],
+   desc:'极宁品牌是一个面向科技领域的品牌形象设计项目，以极简、克制、高级为设计关键词。构建了包含标志规范、色彩系统、字体规范、图形语言及完整应用体系的VI系统，体现科技品牌的理性、精准与未来感。'},
+
+  {id:13, cat:1, title:'云南白药年轻化视觉构建与VI延伸手册', titleEn:'Yunnan Baiyao Youth VI System',
+   subtitle:'面向年轻消费群体的云南白药品牌视觉年轻化重构',
+   img:'w13-pdf-1.jpg', gallery:['w13-pdf-1.jpg','w13-pdf-2.jpg','w13-pdf-3.jpg','w13-pdf-4.jpg','w13-pdf-5.jpg','w13-pdf-6.jpg','w13-pdf-7.jpg','w13-pdf-8.jpg','w13-pdf-9.jpg','w13-pdf-10.jpg','w13-pdf-11.jpg','w13-pdf-12.jpg','w13-pdf-13.jpg','w13-pdf-14.jpg','w13-pdf-15.jpg','w13-pdf-16.jpg','w13-pdf-17.jpg','w13-pdf-18.jpg','w13-pdf-19.jpg','w13-pdf-20.jpg','w13-pdf-21.jpg','w13-pdf-22.jpg','w13-pdf-23.jpg','w13-pdf-24.jpg','w13-pdf-25.jpg','w13-pdf-26.jpg','w13-pdf-27.jpg','w13-pdf-28.jpg','w13-pdf-29.jpg','w13-pdf-30.jpg','w13-pdf-31.jpg','w13-pdf-32.jpg','w13-pdf-33.jpg','w13-pdf-34.jpg','w13-pdf-35.jpg','w13-pdf-36.jpg','w13-pdf-37.jpg','w13-pdf-38.jpg','w13-pdf-39.jpg','w13-pdf-40.jpg','w13-pdf-41.jpg','w13-pdf-42.jpg'], year:'2025', client:'课程作业', role:'品牌设计 / VI系统', awards:[],
+   desc:'基于对云南白药品牌现状及年轻消费群体的深度调研，构建面向青年与少年群体的年轻化视觉体系。包含标志优化、色彩系统、IP形象（三七猴）、字体规范及产品包装、文创周边、线下体验空间等完整应用系统。IP形象三七猴为滇金丝猴与千年三七的灵韵共生，携自然治愈之力守护健康。'},
+
+  {id:14, cat:1, title:'云南红河农产品包装设计', titleEn:'Honghe Agricultural Packaging',
+   subtitle:'基于哈尼族彝族文化的农产品绿色包装设计',
+   img:'w14-1.jpg', gallery:['w14-1.jpg','w14-2.jpg','w14-3.jpg','w14-pdf-1.jpg','w14-pdf-2.jpg','w14-pdf-3.jpg','w14-pdf-4.jpg','w14-pdf-5.jpg','w14-pdf-6.jpg','w14-pdf-7.jpg','w14-pdf-8.jpg','w14-pdf-9.jpg','w14-pdf-10.jpg','w14-pdf-11.jpg','w14-pdf-12.jpg','w14-pdf-13.jpg','w14-pdf-14.jpg','w14-pdf-15.jpg','w14-pdf-16.jpg','w14-pdf-17.jpg','w14-pdf-18.jpg','w14-pdf-19.jpg','w14-pdf-20.jpg','w14-pdf-21.jpg','w14-pdf-22.jpg','w14-pdf-23.jpg','w14-pdf-24.jpg','w14-pdf-25.jpg','w14-pdf-26.jpg','w14-pdf-27.jpg','w14-pdf-28.jpg','w14-pdf-29.jpg','w14-pdf-30.jpg','w14-pdf-31.jpg','w14-pdf-32.jpg','w14-pdf-33.jpg','w14-pdf-34.jpg','w14-pdf-35.jpg','w14-pdf-36.jpg','w14-pdf-37.jpg','w14-pdf-38.jpg','w14-pdf-39.jpg','w14-pdf-40.jpg'], year:'2026', client:'课程作业', role:'包装设计',
+   awards:['第十四届未来设计师·全国高校数字艺术设计大赛 省赛二等奖','2026上海绿色包装创新创意设计大赛 优秀奖'],
+   desc:'以云南红河哈尼族彝族自治州的农产品为设计对象，结合当地民族文化元素进行包装设计。作品注重绿色环保理念与在地文化表达的融合，在包装结构、材料选择与视觉语言上均体现可持续设计思维，同时凸显农产品的地域特色与文化价值。'},
+
+  {id:15, cat:1, title:'放下就熟了——蒙自过桥米线品牌设计', titleEn:'FangXiaJiuShu Brand Design',
+   subtitle:'基于云南蒙自过桥米线文化的餐饮品牌视觉设计',
+   img:'w15-pdf-1.jpg', gallery:['w15-pdf-1.jpg','w15-pdf-2.jpg','w15-pdf-3.jpg','w15-pdf-4.jpg','w15-pdf-5.jpg','w15-pdf-6.jpg','w15-pdf-7.jpg','w15-pdf-8.jpg','w15-pdf-9.jpg','w15-pdf-10.jpg','w15-pdf-11.jpg','w15-pdf-12.jpg','w15-pdf-13.jpg','w15-pdf-14.jpg','w15-pdf-15.jpg','w15-pdf-16.jpg','w15-pdf-17.jpg','w15-pdf-18.jpg','w15-pdf-19.jpg','w15-pdf-20.jpg','w15-pdf-21.jpg','w15-pdf-22.jpg','w15-pdf-23.jpg','w15-pdf-24.jpg','w15-pdf-25.jpg','w15-pdf-26.jpg','w15-pdf-27.jpg','w15-pdf-28.jpg','w15-pdf-29.jpg','w15-pdf-30.jpg','w15-pdf-31.jpg','w15-pdf-32.jpg','w15-pdf-33.jpg','w15-pdf-34.jpg','w15-pdf-35.jpg','w15-pdf-36.jpg','w15-pdf-37.jpg','w15-pdf-38.jpg','w15-pdf-39.jpg','w15-pdf-40.jpg','w15-pdf-41.jpg','w15-pdf-42.jpg','w15-pdf-43.jpg','w15-pdf-44.jpg'], year:'2026', client:'课程作业', role:'品牌设计 / VI系统', awards:[],
+   desc:'基于云南蒙自过桥米线文化的餐饮品牌视觉设计，以"放下就熟了"为品牌命名，既点明过桥米线"烫熟即食"的食用特点，也暗含当代人放慢脚步、享受生活的情感共鸣。构建了包含标志、色彩、图形语言及空间应用的完整品牌视觉体系。'},
+
+  {id:16, cat:1, title:'上海静安统战文创衍生设计', titleEn:'Jing\'an United Front Cultural Creative',
+   subtitle:'基于原创IP小石榴的统战文创体系设计',
+   img:'w16-pdf-1.jpg', gallery:['w16-pdf-1.jpg','w16-pdf-2.jpg','w16-pdf-3.jpg','w16-pdf-4.jpg','w16-pdf-5.jpg','w16-pdf-6.jpg','w16-pdf-7.jpg','w16-pdf-8.jpg','w16-pdf-9.jpg','w16-pdf-10.jpg','w16-pdf-11.jpg','w16-pdf-12.jpg','w16-pdf-13.jpg','w16-pdf-14.jpg','w16-pdf-15.jpg','w16-pdf-16.jpg','w16-pdf-17.jpg','w16-pdf-18.jpg','w16-pdf-19.jpg','w16-pdf-20.jpg','w16-pdf-21.jpg','w16-pdf-22.jpg','w16-pdf-23.jpg','w16-pdf-24.jpg'], year:'2025', client:'上海静安区统战源', role:'文创IP衍生品设计',
+   awards:['第二届"统战源"文创设计大赛 二等奖'],
+   desc:'以"和合静好，榴住美好"为主题，基于原创IP"小石榴"构建统战文创体系。IP手部内置吸铁石实现"携手共行"的互动玩法，背部NFC芯片联动小程序实现科普功能，涵盖高端礼盒、盲盒徽章、非遗工艺等多层次产品线，将统战文化以年轻态、可触摸的方式传递。'},
+
+  {id:17, cat:1, title:'恒源祥100周年品牌标志设计', titleEn:'HengYuanXiang 100th Anniversary Logo',
+   subtitle:'恒源祥品牌百年纪念标志设计与品牌延伸',
+   img:'w17-pdf-1.jpg', gallery:['w17-pdf-1.jpg','w17-pdf-2.jpg','w17-pdf-3.jpg','w17-pdf-4.jpg','w17-pdf-5.jpg','w17-pdf-6.jpg','w17-pdf-7.jpg','w17-pdf-8.jpg','w17-pdf-9.jpg','w17-pdf-10.jpg','w17-pdf-11.jpg','w17-pdf-12.jpg','w17-pdf-13.jpg','w17-pdf-14.jpg','w17-pdf-15.jpg','w17-pdf-16.jpg'], year:'2026', client:'课程作业', role:'标志设计 / 品牌延伸设计', awards:[],
+   desc:'为恒源祥品牌100周年设计纪念标志及品牌延伸应用。在保留品牌核心识别的基础上，融入百年庆典的纪念性与时代感，探索老字号品牌在当代语境下的视觉表达可能性。'},
+
+  {id:18, cat:1, title:'崇明绿华镇"橘黄蟹肥"文化旅游节标志设计', titleEn:'Juhuangxiefei Tourism Festival Logo',
+   subtitle:'以橘子与螃蟹为核心元素的文旅节标志设计',
+   img:'w18-pdf-1.jpg', gallery:['w18-pdf-1.jpg','w18-pdf-2.jpg','w18-pdf-3.jpg','w18-pdf-4.jpg','w18-pdf-5.jpg','w18-pdf-6.jpg','w18-pdf-7.jpg','w18-pdf-8.jpg','w18-pdf-9.jpg','w18-pdf-10.jpg','w18-pdf-11.jpg'], year:'2026', client:'课程作业', role:'标志设计 / 品牌延伸设计', awards:[],
+   desc:'为崇明绿华镇"橘黄蟹肥"文化旅游节设计标志及视觉系统。提取当地特色农产品——柑橘与清水蟹为核心视觉元素，以简约现代的设计语言展现金秋丰收的意象，助力地方文旅品牌的塑造与传播。'},
+
+  {id:19, cat:1, title:'崇明三星镇海棠文化主题活动标志设计', titleEn:'Haitang Culture Festival Logo',
+   subtitle:'以海棠花为核心意象的乡镇文化活动标志设计',
+   img:'w19-pdf-1.jpg', gallery:['w19-pdf-1.jpg','w19-pdf-2.jpg','w19-pdf-3.jpg','w19-pdf-4.jpg','w19-pdf-5.jpg','w19-pdf-6.jpg','w19-pdf-7.jpg','w19-pdf-8.jpg','w19-pdf-9.jpg','w19-pdf-10.jpg','w19-pdf-11.jpg','w19-pdf-12.jpg','w19-pdf-13.jpg','w19-pdf-14.jpg','w19-pdf-15.jpg','w19-pdf-16.jpg','w19-pdf-17.jpg','w19-pdf-18.jpg','w19-pdf-19.jpg','w19-pdf-20.jpg'], year:'2026', client:'课程作业', role:'标志设计 / 品牌延伸设计', awards:[],
+   desc:'为崇明三星镇海棠文化主题活动设计标志及视觉应用系统。以海棠花为核心视觉意象，融合江南水乡的温婉气质与现代设计的简洁表达，打造具有在地文化辨识度的活动品牌视觉。'},
+
+  // === 数字媒体与交互 (cat 2) ===
+  {id:20, cat:2, title:'循环格UI设计——上海高校二手交易App', titleEn:'XunHuanGe App UI Design',
+   subtitle:'面向高校学生群体的二手交易App界面设计',
+   img:'w20-1.jpg', gallery:['w20-1.jpg','w20-pdf-1.jpg','w20-pdf-2.jpg','w20-pdf-3.jpg','w20-pdf-4.jpg','w20-pdf-5.jpg','w20-pdf-6.jpg','w20-pdf-7.jpg','w20-pdf-8.jpg','w20-pdf-9.jpg','w20-pdf-10.jpg','w20-pdf-11.jpg','w20-pdf-12.jpg','w20-pdf-13.jpg','w20-pdf-14.jpg','w20-pdf-15.jpg','w20-pdf-16.jpg','w20-pdf-17.jpg','w20-pdf-18.jpg','w20-pdf-19.jpg','w20-pdf-20.jpg','w20-pdf-21.jpg','w20-pdf-22.jpg','w20-pdf-23.jpg','w20-pdf-24.jpg','w20-pdf-25.jpg','w20-pdf-26.jpg','w20-pdf-27.jpg','w20-pdf-28.jpg'], year:'2025', client:'课程作业', role:'UI设计 / 界面设计',
+   awards:['第十四届未来设计师·全国高校数字艺术设计大赛 省赛三等奖'],
+   desc:'面向上海高校学生群体的二手交易App，解决大学生闲置物品积压造成的资源浪费问题。通过问卷调查（113份有效样本）与SWOT分析进行用户研究，设计包含校园认证、特色分区、自提柜导航、圈子社交等核心功能，配套IP形象"格格"与完整品牌视觉规范，打造年轻、有活力的校园二手交易平台。'},
+
+  {id:21, cat:2, title:'民国海上画坛艺术家数字地图与互动展示', titleEn:'Shanghai Art Circle Digital Map',
+   subtitle:'跨学科数字人文研究项目的UI界面设计',
+   img:'w21-1.png', gallery:['w21-1.png','w21-2.png','w21-3.png','w21-4.png','w21-5.png','w21-6.png','w21-7.png','w21-8.png'], year:'2026', client:'郑洁', role:'UI设计', awards:[],
+   desc:'民国海上画坛艺术家数字地图与互动展示项目是一项持续近十年的跨学科数字人文研究，旨在通过历史文献、空间数据、数字地图与实地建筑调查，重建1912—1948年上海艺术家的生活空间、社会网络与城市艺术生态。在项目组中负责完成互动数字地图作品的互动式地图与网站建设中的UI界面设计部分，包括logo、系列icon、交互按键、底图设计等。'},
+
+  {id:22, cat:2, title:'锦江汽车小程序UI设计', titleEn:'Jinjiang Auto Mini Program UI',
+   subtitle:'传统接单方式向移动端转型的小程序UI设计',
+   img:'w22-0.png', gallery:['w22-0.png','w22-1.jpg','w22-2.jpg','w22-3.jpg','w22-4.jpg'], year:'2025', client:'锦江汽车', role:'UI设计', awards:[],
+   desc:'为上海锦江汽车服务有限公司设计移动端接单小程序界面，将传统线下接单方式升级为移动端操作。以"清晰、简约、安全"为设计关键词，针对司机用户群体的使用场景与操作习惯进行优化设计，方案已被公司采纳。'},
+
+  {id:23, cat:2, title:'看不见的黑狗——儿童抑郁症短片', titleEn:'Invisible Black Dog Short Film',
+   subtitle:'以"黑狗"隐喻探讨儿童抑郁症的AI动画短片',
+   img:'w23-1.jpg', gallery:['w23-1.jpg','w23-video.mp4','w23-2.jpg','w23-3.jpg','w23-4.jpg'], year:'2026', client:'课程作业', role:'AI短视频制作', awards:[],
+   desc:'近年来，青少年心理健康问题日益受到社会关注。《2025中国心理健康蓝皮书》显示，约24.6%的青少年存在不同程度的抑郁症状，家庭环境、人际关系和学业压力已成为影响青少年心理健康的重要因素。然而，相较于身体疾病，抑郁情绪往往更加隐蔽，许多孩子在长期压抑和沉默中逐渐失去与外界沟通的能力。本作品以儿童抑郁症为主题，通过动画短片的形式呈现一个普通男孩被抑郁情绪逐渐侵蚀的过程。作品借用英国前首相丘吉尔提出的"黑狗"隐喻，将抑郁症具象化为一只只有男孩能够看见的黑狗。黑狗体型的变化并非代表一天内的真实成长过程，而是男孩心理负担逐渐加重的视觉隐喻。作品希望通过克制而真实的叙事，引导公众关注儿童心理健康问题，学会倾听孩子未曾说出口的情绪与求助信号。'},
+
+  {id:24, cat:2, title:'我的奇思妙想——一场由音乐开启的白日幻梦', titleEn:'Daydream Fantasy Animation',
+   subtitle:'水彩手绘逐帧动画，探索现实与幻想的边界',
+   img:'w24-1.png', gallery:['w24-1.png','w24-video.mp4'], year:'2025', client:'课程作业', role:'逐帧手绘动画视频制作', awards:[],
+   desc:'本作为大二手绘动画课程练习，全部画面采用水彩手绘完成，着重练习逐帧叙事与幻想氛围的视觉表达。故事来源于自己偶然迸发的奇思：走在普通街道听着音乐，思绪脱离现实，幻想自己站上舞台举办演唱会。幻境褪去重回现实，继续向前行走，以为刚刚仅仅是一场白日梦，可手机播放界面的专辑封面，已经悄然替换成了自己。作品用明亮可爱的水彩色块构建童话感，模糊现实与幻想的边界，表达普通人潜藏于心底、转瞬绽放的自我期许。'},
+
+  {id:25, cat:2, title:'俄罗斯传统纹样动态化', titleEn:'Russian Pattern Motion Design',
+   subtitle:'俄罗斯传统纹样的动态视觉化设计与视频呈现',
+   img:'w25-1.png', gallery:['w25-1.png','w25-video.mp4','w25-pdf-1.jpg','w25-pdf-2.jpg','w25-pdf-3.jpg','w25-pdf-4.jpg','w25-pdf-5.jpg','w25-pdf-6.jpg','w25-pdf-7.jpg','w25-pdf-8.jpg','w25-pdf-9.jpg','w25-pdf-10.jpg'], year:'2025', client:'课程作业', role:'视觉动态设计 / 数码视频剪辑', awards:[],
+   desc:'以俄罗斯传统纹样为研究对象，将静态的传统纹样进行动态视觉化设计。通过对纹样结构、色彩、韵律的分析，以动效设计赋予传统纹样新的生命力，探索民族传统文化在当代数字媒体语境下的创新表达方式。'},
+];
+
+let currentCat = 0;
+let currentView = 'list';
+let workScrollPos = 0; // 保存作品页的滚动位置
+
+function navigate(pageId, fromDetail) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  document.getElementById(pageId).classList.add('active');
+  const navLink = document.querySelector('.nav-link[data-page="' + pageId + '"]');
+  if (navLink) navLink.classList.add('active');
+
+  // 滚动逻辑：只有从详情页返回作品页时保留位置，其他全部置顶
+  var targetPos = (pageId === 'work' && fromDetail) ? workScrollPos : 0;
+  function resetScroll() {
+    window.scrollTo(0, targetPos);
+    document.documentElement.scrollTop = targetPos;
+    document.body.scrollTop = targetPos;
+    if (document.scrollingElement) document.scrollingElement.scrollTop = targetPos;
+  }
+  resetScroll();
+  requestAnimationFrame(resetScroll);
+  setTimeout(resetScroll, 50);
+  setTimeout(resetScroll, 150);
+
+  const navLeft = document.getElementById('nav-left');
+  if (pageId === 'home') {
+    navLeft.classList.remove('show-hint');
+    startRingAnimation();
+  } else {
+    navLeft.classList.add('show-hint');
+  }
+}
+
+function filterWorks(cat) {
+  currentCat = cat;
+  document.querySelectorAll('.category').forEach(c => c.classList.remove('active'));
+  document.querySelector('.category[data-cat="' + cat + '"]').classList.add('active');
+  renderWorks();
+}
+
+function setView(view) {
+  currentView = view;
+  document.getElementById('grid-btn').classList.toggle('active', view === 'grid');
+  document.getElementById('list-btn').classList.toggle('active', view === 'list');
+  renderWorks();
+}
+
+function renderWorks() {
+  const filtered = works.filter(w => w.cat === currentCat);
+  const grid = document.getElementById('works-grid');
+  const list = document.getElementById('works-list');
+
+  if (currentView === 'grid') {
+    grid.style.display = 'grid';
+    list.style.display = 'none';
+    grid.innerHTML = filtered.map(w =>
+      '<div class="work-item" onclick="showDetail(' + w.id + ')">' +
+        '<img src="' + w.img + '" alt="' + w.title + '" loading="lazy">' +
+        '<div class="work-overlay">' +
+          '<div class="work-title">' + w.title + '</div>' +
+          '<div class="work-title-en">' + w.titleEn + '</div>' +
+        '</div>' +
+      '</div>'
+    ).join('');
+  } else {
+    grid.style.display = 'none';
+    list.style.display = 'flex';
+    list.innerHTML = filtered.map(w =>
+      '<div class="work-list-item" onclick="showDetail(' + w.id + ')">' +
+        '<div class="list-image"><img src="' + w.img + '" alt="' + w.title + '" loading="lazy"></div>' +
+        '<div class="list-text">' +
+          '<div class="list-title">' + w.title + '</div>' +
+          '<div class="list-subtitle">' + w.subtitle + '</div>' +
+        '</div>' +
+      '</div>'
+    ).join('');
+  }
+}
+
+function formatTime(s) {
+  if (!s || isNaN(s)) return '00:00';
+  var m = Math.floor(s / 60);
+  var sec = Math.floor(s % 60);
+  return (m < 10 ? '0' : '') + m + ':' + (sec < 10 ? '0' : '') + sec;
+}
+
+function toggleVideo(v, e) {
+  if (e) e.stopPropagation();
+  if (v.paused) {
+    v.play();
+  } else {
+    v.pause();
+  }
+}
+
+function seekVideo(bar, e) {
+  var v = bar.parentElement.previousElementSibling;
+  var rect = bar.getBoundingClientRect();
+  var pct = (e.clientX - rect.left) / rect.width;
+  if (v.duration) v.currentTime = pct * v.duration;
+}
+
+function showDetail(id) {
+  // 保存当前作品页滚动位置
+  workScrollPos = window.scrollY;
+  const w = works.find(w => w.id === id);
+  document.getElementById('detail-title').textContent = w.title;
+  document.getElementById('detail-en').textContent = w.titleEn;
+  document.getElementById('detail-intro').textContent = w.desc;
+  
+  // 渲染图片和视频画廊
+  const gallery = document.getElementById('detail-gallery');
+  if (w.gallery && w.gallery.length > 0) {
+    gallery.innerHTML = w.gallery.map(function(src) {
+      if (src.endsWith('.mp4')) {
+        return '<div class="video-wrapper">' +
+          '<video src="' + src + '" preload="metadata" onclick="toggleVideo(this)"></video>' +
+          '<div class="video-controls">' +
+            '<button class="video-btn" onclick="toggleVideo(this.parentElement.previousElementSibling, event)"><svg class="icon-play" width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg><svg class="icon-pause" width="16" height="16" viewBox="0 0 24 24" fill="white" style="display:none"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg></button>' +
+            '<div class="video-progress" onclick="seekVideo(this, event)"><div class="video-progress-fill"></div></div>' +
+            '<span class="video-time">00:00 / 00:00</span>' +
+          '</div></div>';
+      }
+      return '<img src="' + src + '" alt="' + w.title + '" loading="lazy">';
+    }).join('');
+    // 为每个视频绑定事件
+    gallery.querySelectorAll('video').forEach(function(v) {
+      v.addEventListener('timeupdate', function() {
+        var fill = v.parentElement.querySelector('.video-progress-fill');
+        var time = v.parentElement.querySelector('.video-time');
+        if (fill) {
+          var pct = v.duration ? (v.currentTime / v.duration * 100) : 0;
+          fill.style.width = pct + '%';
+        }
+        if (time) {
+          time.textContent = formatTime(v.currentTime) + ' / ' + formatTime(v.duration);
+        }
+      });
+      v.addEventListener('play', function() {
+        var playIcon = v.parentElement.querySelector('.icon-play');
+        var pauseIcon = v.parentElement.querySelector('.icon-pause');
+        if (playIcon) playIcon.style.display = 'none';
+        if (pauseIcon) pauseIcon.style.display = '';
+      });
+      v.addEventListener('pause', function() {
+        var playIcon = v.parentElement.querySelector('.icon-play');
+        var pauseIcon = v.parentElement.querySelector('.icon-pause');
+        if (playIcon) playIcon.style.display = '';
+        if (pauseIcon) pauseIcon.style.display = 'none';
+      });
+      v.addEventListener('ended', function() {
+        var playIcon = v.parentElement.querySelector('.icon-play');
+        var pauseIcon = v.parentElement.querySelector('.icon-pause');
+        if (playIcon) playIcon.style.display = '';
+        if (pauseIcon) pauseIcon.style.display = 'none';
+      });
+    });
+  } else {
+    gallery.innerHTML = '<img src="' + w.img + '" alt="' + w.title + '" loading="lazy">';
+  }
+  
+  // 获奖情况
+  const awardsBox = document.getElementById('detail-awards');
+  const awardsList = document.getElementById('detail-awards-list');
+  if (w.awards && w.awards.length > 0) {
+    awardsBox.style.display = 'block';
+    awardsList.innerHTML = w.awards.map(a =>
+      '<div class="award-item">' + a + '</div>'
+    ).join('');
+  } else {
+    awardsBox.style.display = 'none';
+  }
+  
+  document.getElementById('detail-meta').innerHTML =
+    '<div><div class="label">年份 Year</div><div class="value">' + w.year + '</div></div>' +
+    '<div><div class="label">客户 Client</div><div class="value">' + w.client + '</div></div>' +
+    '<div><div class="label">角色 Role</div><div class="value">' + w.role + '</div></div>';
+  navigate('work-detail');
+}
+
+renderWorks();
+
+/* ===== 2D Orbital Ring ===== */
+const ringImages = [
+  'ring-1.jpg','ring-2.png','ring-3.jpg','ring-4.jpg',
+  'ring-5.jpg','ring-6.jpg','ring-7.jpg','ring-8.jpg'
+];
+
+const ringContainer = document.getElementById('ring-container');
+const ringCount = ringImages.length;
+const ringRadius = 300;
+const itemW = 180, itemH = 135;
+const ringItems = [];
+
+ringImages.forEach((src, i) => {
+  const angle = (360 / ringCount) * i;
+  const rad = angle * Math.PI / 180;
+  const x = ringRadius * Math.cos(rad);
+  const y = ringRadius * Math.sin(rad);
+  const item = document.createElement('div');
+  item.className = 'ring-item';
+  item.style.left = 'calc(50% + ' + x + 'px - ' + (itemW/2) + 'px)';
+  item.style.top = 'calc(50% + ' + y + 'px - ' + (itemH/2) + 'px)';
+  item.innerHTML = '<img src="' + src + '" alt="work ' + (i+1) + '" loading="lazy">';
+  ringContainer.appendChild(item);
+  ringItems.push(item);
+});
+
+let ringRotation = 0;
+let scrollVelocity = 0;
+const autoRotateSpeed = 0.12;
+let ringAnimating = true;
+
+function animateRing() {
+  // 首页不活跃时暂停动画，节省 CPU
+  const homePage = document.getElementById('home');
+  if (!homePage || !homePage.classList.contains('active')) {
+    ringAnimating = false;
+    return;
+  }
+  ringRotation += autoRotateSpeed + scrollVelocity;
+  scrollVelocity *= 0.94;
+  if (Math.abs(scrollVelocity) < 0.01) scrollVelocity = 0;
+  ringContainer.style.transform = 'rotate(' + ringRotation + 'deg)';
+  ringItems.forEach(item => { item.style.transform = 'rotate(' + (-ringRotation) + 'deg)'; });
+  requestAnimationFrame(animateRing);
+}
+
+function startRingAnimation() {
+  if (!ringAnimating) {
+    ringAnimating = true;
+    animateRing();
+  }
+}
+
+animateRing();
+
+window.addEventListener('wheel', (e) => {
+  const homePage = document.getElementById('home');
+  if (!homePage.classList.contains('active')) return;
+  const ringSection = document.querySelector('.ring-section');
+  if (!ringSection) return;
+  const rect = ringSection.getBoundingClientRect();
+  if (rect.top < window.innerHeight * 0.8 && rect.bottom > window.innerHeight * 0.2) {
+    scrollVelocity += e.deltaY * 0.02;
+    scrollVelocity = Math.max(-8, Math.min(8, scrollVelocity));
+  }
+}, { passive: true });
+</script>
+
+</body>
+</html>
